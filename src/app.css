@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --background: 11, 11, 11;
+  --foreground: 248, 249, 255;
+  --surface: 13, 14, 18;
+  --surface-variant: 28, 29, 35;
+  --primary: 90, 1, 144;
+  --muted: 125, 125, 125;
+}

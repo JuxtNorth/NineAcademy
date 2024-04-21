@@ -4,5 +4,8 @@
 	},
 	"editor.quickSuggestions": {
 		"strings": "on"
+	},
+	"emmet.includeLanguages": {
+		"svelte": "html"
 	}
 }
