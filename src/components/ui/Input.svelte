@@ -17,5 +17,5 @@
 	{placeholder}
 	bind:this={input}
 	on:input={handleInput}
-	class="bg-surface-variant placeholder:text-muted w-full rounded-full text-foreground px-5 py-2"
+	class="bg-surface-foreground placeholder:text-muted w-full rounded-full text-foreground px-5 py-4 text-[16px]"
 />

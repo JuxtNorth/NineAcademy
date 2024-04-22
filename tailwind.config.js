@@ -7,13 +7,13 @@ export default {
 				background: 'rgb(var(--background))',
 				foreground: 'rgb(var(--foreground))',
 				surface: 'rgb(var(--surface))',
-				'surface-variant': 'rgb(var(--surface-variant))',
+				'surface-foreground': 'rgb(var(--surface-foreground))',
 				primary: 'rgb(var(--primary))',
 				muted: 'rgb(var(--muted))'
 			},
 			fontFamily: {
 				display: '"Lato", sans-serif;',
-				body: '"League Spartan", sans-serif'
+				body: '"Nunito Sans", sans-serif'
 			}
 		}
 	},
