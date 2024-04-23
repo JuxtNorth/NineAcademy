@@ -3,6 +3,7 @@
 	import '../app.css';
 	import { getAuth, isSignInWithEmailLink, signInWithEmailLink } from 'firebase/auth';
 	import { getFirebaseApp } from "$lib/firebase";
+	import { Alert } from '$components/ui';
 
 	onMount(async () => {
 		const auth = getAuth(getFirebaseApp());
@@ -21,6 +22,8 @@
 		}
 	})
 </script>
+
+<Alert />
 
 <svelte:head>
 	<link rel="preconnect" href="https://fonts.googleapis.com" />

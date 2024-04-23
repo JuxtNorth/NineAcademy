@@ -4,18 +4,38 @@
 	import { getAuth, sendSignInLinkToEmail } from 'firebase/auth';
 	import { getFirebaseApp } from '$lib/firebase';
 	import { actionCodeSettings } from '$constants';
+	import { alert } from '$lib/stores';
+	import { validateEmail } from '$lib/utils';
 
 	let email = '';
 
 	async function sendPaswordlessEmail() {
+		if (!validateEmail(email)) {
+			alert.set({
+				title: 'Invalid Email',
+				description: 'Please enter a valid email to log in.',
+				type: 'error'
+			});
+			return;
+		}
+
 		const auth = getAuth(getFirebaseApp());
+
 		try {
 			await sendSignInLinkToEmail(auth, email, actionCodeSettings);
 			window.localStorage.setItem('emailForSignIn', email.trim().toLowerCase());
-			alert("Email sent to " + email)
+			alert.set({
+				title: 'Email passwordless link sent!',
+				description: 'Please click on the link provided in the email to sign in',
+				type: 'info'
+			});
 		} catch (error) {
 			console.error(error);
-			alert('Failed to send link');
+			alert.set({
+				title: 'Failed to send passwordless email.',
+				description: 'Please use a different login provider or sign in again tomorrow.',
+				type: 'error'
+			});
 		}
 	}
 </script>
