@@ -54,7 +54,7 @@ export function observeAuthStateChange() {
 	onAuthStateChanged(auth, (newUser) => {
 		if (newUser) {
 			user.set(newUser);
-			goto('/');
+			if (window.location.pathname === '/signin') goto('/');
 		} else {
 			user.set(null);
 		}
