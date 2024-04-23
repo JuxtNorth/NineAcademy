@@ -1,26 +1,13 @@
 <script>
 	import { onMount } from 'svelte';
-	import '../app.css';
-	import { getAuth, isSignInWithEmailLink, signInWithEmailLink } from 'firebase/auth';
-	import { getFirebaseApp } from "$lib/firebase";
 	import { Alert } from '$components/ui';
+	import { handleSignInWithEmail, observeAuthStateChange } from "$lib/firebase";
+	import '../app.css';
 
-	onMount(async () => {
-		const auth = getAuth(getFirebaseApp());
-		if (isSignInWithEmailLink(auth, window.location.href)) {
-			const email = window.localStorage.getItem('emailForSignIn');
-			if (email) {
-				try {
-					const result = await signInWithEmailLink(auth, email, window.location.href);
-					window.localStorage.removeItem('emailForSignIn');
-					alert("Sign in Success");
-					console.log(result)
-				} catch (error) {
-					console.error(error);
-				}
-			}
-		}
-	})
+	onMount(() => {
+		handleSignInWithEmail();
+		observeAuthStateChange();
+	});
 </script>
 
 <Alert />

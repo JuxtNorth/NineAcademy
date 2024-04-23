@@ -1,8 +1,14 @@
 <script lang="ts">
 	import { Button, Input } from '$components/ui';
-	import { Google, Github, Apple } from '$icons';
-	import { getAuth, sendSignInLinkToEmail } from 'firebase/auth';
-	import { getFirebaseApp } from '$lib/firebase';
+	import { Google, Github, Twitter } from '$icons';
+	import {
+		getAuth,
+		sendSignInLinkToEmail,
+		GoogleAuthProvider,
+		TwitterAuthProvider,
+		GithubAuthProvider
+	} from 'firebase/auth';
+	import { getFirebaseApp, signInWithProvider } from '$lib/firebase';
 	import { actionCodeSettings } from '$constants';
 	import { alert } from '$lib/stores';
 	import { validateEmail } from '$lib/utils';
@@ -38,6 +44,21 @@
 			});
 		}
 	}
+
+	function authWithGoogle() {
+		const provider = new GoogleAuthProvider();
+		signInWithProvider(provider);
+	}
+
+	function authWithTwitter() {
+		const provider = new TwitterAuthProvider();
+		signInWithProvider(provider);
+	}
+
+	function authWithGithub() {
+		const provider = new GithubAuthProvider();
+		signInWithProvider(provider);
+	}
 </script>
 
 <main class="relative h-dvh w-screen p-8 lg:grid lg:grid-cols-[60%_40%] lg:p-0">
@@ -66,14 +87,14 @@
 			>
 			<p class="strike-line relative !mt-4 text-center text-xs">or continue with</p>
 			<div class="self-center">
-				<Button size="icon" style="mono">
+				<Button size="icon" style="mono" on:click={authWithGoogle}>
 					<Google />
 				</Button>
-				<Button size="icon" style="mono">
+				<Button size="icon" style="mono" on:click={authWithGithub}>
 					<Github />
 				</Button>
-				<Button size="icon" style="mono">
-					<Apple />
+				<Button size="icon" style="mono" on:click={authWithTwitter}>
+					<Twitter />
 				</Button>
 			</div>
 		</form>
