@@ -98,7 +98,7 @@
 				</Button>
 			</div>
 		</form>
-		<button class="absolute bottom-4 text-sm text-blue-700">Skip sign in</button>
+		<button class="text-blue-700 absolute bottom-4 text-sm">Skip sign in</button>
 	</section>
 </main>
 

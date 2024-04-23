@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { Alert } from '$components/ui';
-	import { handleSignInWithEmail, observeAuthStateChange } from "$lib/firebase";
+	import { handleSignInWithEmail, observeAuthStateChange } from '$lib/firebase';
 	import '../app.css';
 
 	onMount(() => {

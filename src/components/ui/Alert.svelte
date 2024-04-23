@@ -34,7 +34,10 @@
 </script>
 
 {#if isVisible}
-	<div class="absolute left-[50%] top-4 z-50 mx-auto w-[80%] -translate-x-[50%]" transition:fly={{ y: -42 }}>
+	<div
+		class="absolute left-[50%] top-4 z-50 mx-auto w-[80%] -translate-x-[50%]"
+		transition:fly={{ y: -42 }}
+	>
 		<Alert.Root {variant}>
 			<Warning />
 			<Alert.Title>{title}</Alert.Title>
