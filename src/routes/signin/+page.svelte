@@ -80,7 +80,9 @@
 			class="mx-auto flex h-fit max-w-96 flex-col space-y-2 rounded-2xl bg-surface px-8 py-12 lg:w-[90%] lg:max-w-[40rem]"
 		>
 			<h1 class="text-[42px] font-semibold leading-[104%] lg:text-5xl">Log In</h1>
-			<p class="!mb-4">Please enter your email below to sign in.</p>
+			<p class="!mb-4 text-sm leading-tight lg:text-base">
+				Please enter your email below to sign in.
+			</p>
 			<Input placeholder="Enter your email" type="email" bind:value={email} />
 			<Button size="wide" style="primary" type="submit" on:click={sendPaswordlessEmail}
 				>Send Magic Sign in link</Button

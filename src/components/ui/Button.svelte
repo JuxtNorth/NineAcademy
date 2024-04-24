@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { cn } from '$lib/utils';
 	import { cva, type VariantProps } from 'class-variance-authority';
 
 	const buttonVariants = cva(
@@ -24,6 +25,6 @@
 	export let style: variant['style'] = 'primary';
 </script>
 
-<button {...$$restProps} on:click class={buttonVariants({ size, style })}>
+<button {...$$restProps} on:click class={cn(buttonVariants({ size, style }), $$props['class'])}>
 	<slot />
 </button>

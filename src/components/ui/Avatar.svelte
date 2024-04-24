@@ -14,5 +14,5 @@
 		<div class="size-full rounded-full bg-gradient-to-br from-orange to-rose"></div>
 	</button>
 {:else}
-	<a href="/signin" class="rounded-lg bg-blue px-4 py-2">Sign In</a>
+	<a href="/signin" class="rounded-full bg-blue px-4 py-2 text-xs">Sign In</a>
 {/if}

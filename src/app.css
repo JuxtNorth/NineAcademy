@@ -87,3 +87,19 @@
 		@apply bg-background text-foreground;
 	}
 }
+
+::-webkit-scrollbar {
+	width: 2px;
+}
+
+::-webkit-scrollbar-track {
+	background: hsl(var(--surface));
+}
+
+::-webkit-scrollbar-thumb {
+	background: hsl(var(--surface));
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
