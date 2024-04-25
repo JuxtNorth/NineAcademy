@@ -1,20 +1,22 @@
 <script lang="ts">
 	import { TextArea } from '$components';
-	import { Button, Input } from '$components/ui';
+	import { Input } from '$components/ui';
 	import { Kebab } from '$icons';
+	import { createEventDispatcher } from 'svelte';
 
 	export let index = 0;
 	export let title = 'Lorem Ipsum';
 	export let content = '';
-	export let id = '';
 	export let collapsed = false;
 
-	function toggle(e: Event) {
-		if (e.target !== e.currentTarget) return;
-		collapsed = !collapsed;
-	}
+	const dispatch = createEventDispatcher();
 
-	$: id;
+	function toggle(e: Event) {
+		if (e.target === e.currentTarget) {
+			collapsed = !collapsed;
+			if (!collapsed) dispatch('open');
+		}
+	}
 </script>
 
 <article class="space-y-4 rounded-lg bg-surface p-4">
@@ -38,8 +40,7 @@
 	{#if !collapsed}
 		<div class="space-y-2">
 			<Input class="rounded-lg text-sm" placeholder="Enter Chapter title" bind:value={title} />
-			<TextArea bind:value={content} placeholder="Enter chapter content"/>
-			<Button size="wide" class="rounded-lg">Commit</Button>
+			<TextArea bind:value={content} placeholder="Enter chapter content" />
 		</div>
 	{/if}
 </article>

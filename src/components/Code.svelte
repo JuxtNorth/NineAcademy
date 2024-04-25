@@ -31,7 +31,7 @@
 
 <style lang="postcss">
 	:global(pre code.hljs) {
-		@apply block overflow-x-auto bg-surface-foreground rounded-lg p-4;
+		@apply block overflow-x-auto bg-surface-foreground rounded-lg p-4 mb-4;
 	}
 
 	:global(.hljs) {

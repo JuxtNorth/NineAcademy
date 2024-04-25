@@ -11,10 +11,18 @@ import {
 import { alert, user } from '$lib/stores';
 import { goto } from '$app/navigation';
 import { firebaseConfig } from '$constants';
-import { getFirestore } from 'firebase/firestore';
+import { doc, getDoc, getFirestore } from 'firebase/firestore';
+import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
 
 export function getFirebaseApp() {
-	return getApps().length ? getApp() : initializeApp(firebaseConfig);
+	let app = getApps().length ? getApp() : null;
+	if (app !== null) return app;
+	app = initializeApp(firebaseConfig);
+  initializeAppCheck(app, {
+    provider: new ReCaptchaV3Provider('6LdzUccpAAAAAAiUKXTzrapoOoJZXpvZllQDoaRA'),
+    isTokenAutoRefreshEnabled: true,
+  });
+	return app;
 }
 
 export function createUser() {}
@@ -82,10 +90,14 @@ export async function signOutUser() {
 	}
 }
 
-export async function readFirestore() {
+export async function getFirestoreDoc(path: string) {
 	const db = getFirestore(getFirebaseApp());
 	try {
-		db;
+		const docRef = doc(db, path);
+		const docSnap = await getDoc(docRef);
+		if (docSnap.exists()) {
+			return docSnap.data();
+		}
 	} catch (error) {
 		console.error(error);
 		alert.set({

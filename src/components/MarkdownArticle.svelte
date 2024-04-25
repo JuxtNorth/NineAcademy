@@ -17,10 +17,14 @@
 	}
 
 	:global(.content-markdown > h1) {
-		@apply mb-8 text-4xl font-bold;
+		@apply text-3xl font-bold mb-4 last:!mb-4;
+	}
+
+	:global(.content-markdown > h2) {
+		@apply text-2xl font-semibold mb-4 last:!mb-4;
 	}
 
 	:global(.content-markdown > p) {
-		@apply mb-4 text-lg font-semibold;
+		@apply text-lg font-semibold mb-4 last:!mb-4;
 	}
 </style>
