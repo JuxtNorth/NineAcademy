@@ -40,6 +40,8 @@
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.1.0",
 		"firebase": "^10.11.0",
+		"highlight.js": "^11.9.0",
+		"svelte-highlight": "^7.6.0",
 		"svelte-markdown": "^0.4.1",
 		"tailwind-merge": "^2.3.0",
 		"tailwind-variants": "^0.2.1"

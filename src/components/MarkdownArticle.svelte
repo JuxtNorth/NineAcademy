@@ -1,12 +1,15 @@
 <script lang="ts">
 	import SvelteMarkdown from 'svelte-markdown';
+	import { Code } from "$components";
 
 	export let source = '';
 </script>
 
-<div class="content-markdown">
-	<SvelteMarkdown {source} />
-</div>
+<article class="content-markdown">
+	<SvelteMarkdown {source} renderers={{
+		code: Code
+	}}/>
+</article>
 
 <style lang="postcss">
 	:global(.content-markdown) {

@@ -1,10 +1,11 @@
 <script lang="ts">
+	import { TextArea } from '$components';
 	import { Button, Input } from '$components/ui';
 	import { Kebab } from '$icons';
 
 	export let index = 0;
 	export let title = 'Lorem Ipsum';
-	export let description = '';
+	export let content = '';
 	export let id = '';
 	export let collapsed = false;
 
@@ -37,11 +38,7 @@
 	{#if !collapsed}
 		<div class="space-y-2">
 			<Input class="rounded-lg text-sm" placeholder="Enter Chapter title" bind:value={title} />
-			<textarea
-				class="h-32 w-full rounded-lg bg-surface-foreground p-4 font-body text-sm outline-none outline-1 placeholder:text-muted focus:outline-fuchsia"
-				placeholder="Enter Chapter description"
-				bind:value={description}
-			></textarea>
+			<TextArea bind:value={content} placeholder="Enter chapter content"/>
 			<Button size="wide" class="rounded-lg">Commit</Button>
 		</div>
 	{/if}
