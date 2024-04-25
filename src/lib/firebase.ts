@@ -11,6 +11,7 @@ import {
 import { alert, user } from '$lib/stores';
 import { goto } from '$app/navigation';
 import { firebaseConfig } from '$constants';
+import { getFirestore } from 'firebase/firestore';
 
 export function getFirebaseApp() {
 	return getApps().length ? getApp() : initializeApp(firebaseConfig);
@@ -76,6 +77,20 @@ export async function signOutUser() {
 		alert.set({
 			title: 'Failed to Sign Out',
 			description: 'An unknown error has occured',
+			type: 'error'
+		});
+	}
+}
+
+export async function readFirestore() {
+	const db = getFirestore(getFirebaseApp());
+	try {
+		db;
+	} catch (error) {
+		console.error(error);
+		alert.set({
+			title: 'Failed to fetch document',
+			description: 'An error has occured while trying to access this resource',
 			type: 'error'
 		});
 	}

@@ -7,3 +7,5 @@ export { default as Bookmark } from './Bookmark.svelte';
 export { default as AngleLeft } from './AngleLeft.svelte';
 export { default as AngleRight } from './AngleRight.svelte';
 export { default as Check } from './Check.svelte';
+export { default as Plus } from './Plus.svelte';
+export { default as Kebab } from './Kebab.svelte';

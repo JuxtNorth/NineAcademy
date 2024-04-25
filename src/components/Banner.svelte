@@ -19,7 +19,7 @@
 	<div class="z-[1]">
 		<h1 class="mb-6 text-4xl font-extrabold md:text-5xl">Nextjs 14 Crash Course</h1>
 		<p class="max-w-prose text-base font-semibold md:text-xl">
-			Next.js is a React framework for building full-stack web applications. You use React
+			Next.js is a React framework for buildi4ng full-stack web applications. You use React
 			Components to build user interfaces, and Next.js for additional features and optimizations.
 		</p>
 	</div>

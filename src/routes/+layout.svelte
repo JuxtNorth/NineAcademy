@@ -35,4 +35,8 @@
 	:global(h1, h2, h3, h4, h5, h6) {
 		@apply font-display text-foreground;
 	}
+
+	:global(input[type='text']) {
+		@apply outline-none focus:outline-1 focus:outline-fuchsia;
+	}
 </style>
