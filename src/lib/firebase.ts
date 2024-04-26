@@ -12,17 +12,9 @@ import { alert, user } from '$lib/stores';
 import { goto } from '$app/navigation';
 import { firebaseConfig } from '$constants';
 import { doc, getDoc, getFirestore } from 'firebase/firestore';
-import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
 
 export function getFirebaseApp() {
-	let app = getApps().length ? getApp() : null;
-	if (app !== null) return app;
-	app = initializeApp(firebaseConfig);
-  initializeAppCheck(app, {
-    provider: new ReCaptchaV3Provider('6LdzUccpAAAAAAiUKXTzrapoOoJZXpvZllQDoaRA'),
-    isTokenAutoRefreshEnabled: true,
-  });
-	return app;
+	return getApps().length ? getApp() : initializeApp(firebaseConfig);
 }
 
 export function createUser() {}
