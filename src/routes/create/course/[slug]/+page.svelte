@@ -1,18 +1,13 @@
-<script>
+<script lang="ts">
 	import { Input, Button } from '$components/ui';
 	import { Nav, ChapterEditor, MarkdownArticle } from '$components';
 	import { Plus } from '$icons';
+	import type { PageData } from "./$types";
 
-	/** @type {import('./$types').PageData} */
-	export let data;
+	export let data: PageData;
 
-	console.log(data);
-
-	let title = '';
-	let content = '';
+	let { title, description, chapters } = data;
 	let selectedChapterIndex = 0;
-
-	let chapters = [{ title: '', content: '# Undefined' }];
 
 	function addNewChapter() {
 		const newchapter = { title: '', content: '# Undefined' };
@@ -30,7 +25,7 @@
 		<div class="space-y-2">
 			<Input bind:value={title} class="rounded-lg" placeholder="Enter Course title" />
 			<textarea
-				bind:value={content}
+				bind:value={description}
 				class="h-36 w-full rounded-lg bg-surface-foreground px-5 py-4 font-body outline-none outline-1 placeholder:text-muted focus:outline-fuchsia"
 				placeholder="Enter description"
 			/>

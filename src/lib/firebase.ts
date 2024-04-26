@@ -82,20 +82,16 @@ export async function signOutUser() {
 	}
 }
 
-export async function getFirestoreDoc(path: string) {
+export async function getFirestoreDoc<T>(path: string): Promise<T | null> {
 	const db = getFirestore(getFirebaseApp());
 	try {
 		const docRef = doc(db, path);
 		const docSnap = await getDoc(docRef);
 		if (docSnap.exists()) {
-			return docSnap.data();
+			return docSnap.data() as T;
 		}
 	} catch (error) {
 		console.error(error);
-		alert.set({
-			title: 'Failed to fetch document',
-			description: 'An error has occured while trying to access this resource',
-			type: 'error'
-		});
 	}
+	return null;
 }
