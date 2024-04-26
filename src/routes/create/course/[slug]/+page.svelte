@@ -2,7 +2,7 @@
 	import { Input, Button } from '$components/ui';
 	import { Nav, ChapterEditor, MarkdownArticle } from '$components';
 	import { Plus } from '$icons';
-	import type { PageData } from "./$types";
+	import type { PageData } from './$types';
 
 	export let data: PageData;
 

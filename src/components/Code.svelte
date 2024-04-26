@@ -8,11 +8,11 @@
 	let text = '';
 
 	onMount(() => {
-    text = span.innerText;
+		text = span.innerText;
 		observer = new MutationObserver((mutations) => {
-      console.log("Update")
+			console.log('Update');
 			mutations.forEach((mutation) => {
-        console.log(span.innerText)
+				console.log(span.innerText);
 				if (mutation.type === 'characterData') {
 					text = span.innerText;
 				}
@@ -27,11 +27,17 @@
 </script>
 
 <span bind:this={span} class="hidden" aria-hidden><slot /></span>
-<Highlight language={typescript} code={text.trim().substring(3, text.length - 3).trim()} />
+<Highlight
+	language={typescript}
+	code={text
+		.trim()
+		.substring(3, text.length - 3)
+		.trim()}
+/>
 
 <style lang="postcss">
 	:global(pre code.hljs) {
-		@apply block overflow-x-auto bg-surface-foreground rounded-lg p-4 mb-4;
+		@apply mb-4 block overflow-x-auto rounded-lg bg-surface-foreground p-4;
 	}
 
 	:global(.hljs) {

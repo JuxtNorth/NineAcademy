@@ -9,3 +9,4 @@ export { default as AngleRight } from './AngleRight.svelte';
 export { default as Check } from './Check.svelte';
 export { default as Plus } from './Plus.svelte';
 export { default as Kebab } from './Kebab.svelte';
+export { default as ArrowRight } from './ArrowRight.svelte';
