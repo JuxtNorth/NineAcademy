@@ -11,7 +11,7 @@ import {
 import { alert, user } from '$lib/stores';
 import { goto } from '$app/navigation';
 import { firebaseConfig } from '$constants';
-import { doc, getDoc, getFirestore } from 'firebase/firestore';
+import { doc, getDoc, getFirestore, setDoc } from 'firebase/firestore';
 
 export function getFirebaseApp() {
 	return getApps().length ? getApp() : initializeApp(firebaseConfig);
@@ -94,4 +94,11 @@ export async function getFirestoreDoc<T>(path: string): Promise<T | null> {
 		console.error(error);
 	}
 	return null;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function setFirestoreDoc(path: string, data: any) {
+	const db = getFirestore(getFirebaseApp());
+	const docRef = doc(db, path);
+	await setDoc(docRef, data);
 }

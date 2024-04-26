@@ -3,6 +3,8 @@
 	import { Nav, ChapterEditor, MarkdownArticle } from '$components';
 	import { Plus } from '$icons';
 	import type { PageData } from './$types';
+	import { alert } from '$lib/stores';
+	import { setFirestoreDoc } from '$lib/firebase';
 
 	export let data: PageData;
 
@@ -13,6 +15,23 @@
 		const newchapter = { title: '', content: '# Undefined' };
 		chapters = [...chapters, newchapter];
 	}
+
+	async function commit() {
+		try {
+			await setFirestoreDoc(`courses/${data.id}`, { title, description, chapters });
+			alert.set({
+				title: 'Success',
+				description: 'Successfully update this course',
+				type: 'info'
+			});
+		} catch {
+			alert.set({
+				title: 'Error',
+				description: 'Failed to update this resource',
+				type: 'error'
+			});
+		}
+	}
 </script>
 
 <Nav />
@@ -20,7 +39,7 @@
 	<div class="no-scrollbar space-y-4 lg:h-[calc(100vh-2rem)] lg:overflow-y-scroll">
 		<header class="flex justify-between">
 			<h1 class="text-4xl font-bold">{title || 'Untitled'}</h1>
-			<Button size="auto" class="rounded-lg">Commit</Button>
+			<Button size="auto" class="rounded-lg" on:click={commit}>Commit</Button>
 		</header>
 		<div class="space-y-2">
 			<Input bind:value={title} class="rounded-lg" placeholder="Enter Course title" />
