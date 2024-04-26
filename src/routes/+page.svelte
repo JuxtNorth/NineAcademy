@@ -1,6 +1,6 @@
 <script>
 	import { IconGrid, Nav, NoisyOverlay } from '$components';
-	import { ArrowRight } from '$icons';
+	import { ArrowRight, Heart, Twitter, LinkedIn, Instagram, Github } from '$icons';
 </script>
 
 <Nav />
@@ -130,47 +130,50 @@
 			The most <span class="text-blue">value</span> for money
 			<span class="text-rose">educational</span> content you'll find on the planet.
 		</h1>
-		<div class="flex flex-col gap-4 px-8 md:grid md:grid-cols-2 max-w-[60rem] mx-auto">
-			<article class="w-full space-y-8 rounded-2xl bg-surface p-8 text-left flex flex-col justify-between">
-				
-					<div class="space-y-2">
-						<span class="font-semi-bold text-sm text-muted">Monthly</span>
-						<h1 class="text-3xl font-bold">
-							&#8377;899/<sub class="text-base text-muted">month</sub>
-						</h1>
-					</div>
-					<ul class="space-y-2">
-						<li class="flex h-fit gap-2">
-							<div class="mt-1 size-2 shrink-0 rounded-full bg-rose" />
-							<span class="leading-tight">Access to all courses.</span>
-						</li>
-						<li class="flex h-fit gap-2">
-							<div class="mt-1 size-2 shrink-0 rounded-full bg-rose" />
-							<span class="leading-tight">Access to member only blogs.</span>
-						</li>
-						<li class="flex h-fit gap-2">
-							<div class="mt-1 size-2 shrink-0 rounded-full bg-rose" />
-							<span class="leading-tight">Exclusive videos.</span>
-						</li>
-						<li class="flex h-fit gap-2">
-							<div class="mt-1 size-2 shrink-0 rounded-full bg-rose" />
-							<span class="leading-tight">Zero Ads</span>
-						</li>
-						<li class="flex h-fit gap-2">
-							<div class="mt-1 size-2 shrink-0 rounded-full bg-rose" />
-							<span class="leading-tight">Free exclusive merch sent to your doorstep.</span>
-						</li>
-						<li class="flex h-fit gap-2">
-							<div class="mt-1 size-2 shrink-0 rounded-full bg-rose" />
-							<span class="leading-tight">Live sessions.</span>
-						</li>
-						<li class="flex h-fit gap-2">
-							<div class="mt-1 size-2 shrink-0 rounded-full bg-rose" />
-							<span class="leading-tight">Cancel anytime</span>
-						</li>
-					</ul>
-				
-				<button class="w-full rounded-full bg-blue py-4 text-sm md:max-w-36 hover:brightness-110">Buy plan</button>
+		<div class="mx-auto flex max-w-[60rem] flex-col gap-4 px-8 md:grid md:grid-cols-2">
+			<article
+				class="flex w-full flex-col justify-between space-y-8 rounded-2xl bg-surface p-8 text-left"
+			>
+				<div class="space-y-2">
+					<span class="font-semi-bold text-sm text-muted">Monthly</span>
+					<h1 class="text-3xl font-bold">
+						&#8377;899/<sub class="text-base text-muted">month</sub>
+					</h1>
+				</div>
+				<ul class="space-y-2">
+					<li class="flex h-fit gap-2">
+						<div class="mt-1 size-2 shrink-0 rounded-full bg-rose" />
+						<span class="leading-tight">Access to all courses.</span>
+					</li>
+					<li class="flex h-fit gap-2">
+						<div class="mt-1 size-2 shrink-0 rounded-full bg-rose" />
+						<span class="leading-tight">Access to member only blogs.</span>
+					</li>
+					<li class="flex h-fit gap-2">
+						<div class="mt-1 size-2 shrink-0 rounded-full bg-rose" />
+						<span class="leading-tight">Exclusive videos.</span>
+					</li>
+					<li class="flex h-fit gap-2">
+						<div class="mt-1 size-2 shrink-0 rounded-full bg-rose" />
+						<span class="leading-tight">Zero Ads</span>
+					</li>
+					<li class="flex h-fit gap-2">
+						<div class="mt-1 size-2 shrink-0 rounded-full bg-rose" />
+						<span class="leading-tight">Free exclusive merch sent to your doorstep.</span>
+					</li>
+					<li class="flex h-fit gap-2">
+						<div class="mt-1 size-2 shrink-0 rounded-full bg-rose" />
+						<span class="leading-tight">Live sessions.</span>
+					</li>
+					<li class="flex h-fit gap-2">
+						<div class="mt-1 size-2 shrink-0 rounded-full bg-rose" />
+						<span class="leading-tight">Cancel anytime</span>
+					</li>
+				</ul>
+
+				<button class="w-full rounded-full bg-blue py-4 text-sm hover:brightness-110 md:max-w-36"
+					>Buy plan</button
+				>
 			</article>
 			<div class="flex flex-col gap-4">
 				<article class="space-y-4 rounded-2xl bg-surface p-8 text-left">
@@ -183,22 +186,51 @@
 					<p class="text-sm leading-tight">
 						Contains everything included in the monthly plan with discounts
 					</p>
-					<button class="w-full rounded-full bg-rose py-4 text-sm md:max-w-36 hover:brightness-110">Buy plan</button>
+					<button class="w-full rounded-full bg-rose py-4 text-sm hover:brightness-110 md:max-w-36"
+						>Buy plan</button
+					>
 				</article>
-				<article class="relative space-y-4 rounded-2xl bg-surface p-8 text-left [background-image:radial-gradient(circle_at_100%_100%,hsl(var(--blue)),hsl(var(--fuchsia)))]">
-					<div class="space-y-2 z-[1]">
+				<article
+					class="relative space-y-4 rounded-2xl bg-surface p-8 text-left [background-image:radial-gradient(circle_at_100%_100%,hsl(var(--blue)),hsl(var(--fuchsia)))]"
+				>
+					<div class="z-[1] space-y-2">
 						<span class="font-semi-bold text-sm">Life membership</span>
-						<h1 class="text-3xl font-bold">
-							&#8377;4999
-						</h1>
+						<h1 class="text-3xl font-bold">&#8377;4999</h1>
 					</div>
-					<p class="text-sm leading-tight z-[1]">
-						Get a huge discount and unlimited access.
-					</p>
-					<button class="w-full rounded-full bg-white/20 hover:bg-white/30 py-4 text-sm z-[1] md:max-w-36">Buy plan</button>
+					<p class="z-[1] text-sm leading-tight">Get a huge discount and unlimited access.</p>
+					<button
+						class="z-[1] w-full rounded-full bg-white/20 py-4 text-sm hover:bg-white/30 md:max-w-36"
+						>Buy plan</button
+					>
 					<NoisyOverlay class="opacity-60" />
 				</article>
 			</div>
 		</div>
 	</section>
+	<footer class="w-full p-4">
+		<div class="flex flex-col items-center gap-8 rounded-2xl bg-surface px-8 py-8">
+			<h1
+				class="bg-gradient-to-tr from-rose to-orange bg-clip-text text-4xl font-extrabold text-transparent"
+			>
+				Nine Academy
+			</h1>
+			<p class="text-center text-sm">Made under the 30DaysCoding 10 day hackathon</p>
+			<ul class="flex gap-4">
+				<li class="rounded-lg bg-surface-foreground p-3">
+					<a href="https://github.com/JuxtNorth" class="size-fit"><Github /></a>
+				</li>
+				<li class="rounded-lg bg-surface-foreground p-3">
+					<a href="https://www.instagram.com/juxt_north" class="size-fit"><Instagram /></a>
+				</li>
+				<li class="rounded-lg bg-surface-foreground p-3">
+					<a href="https://www.linkedin.com/in/kiron-dey-2566302b3" class="size-fit"><LinkedIn /></a
+					>
+				</li>
+				<li class="rounded-lg bg-surface-foreground p-3">
+					<a href="https://x.com/KironDey14" class="size-fit"><Twitter /></a>
+				</li>
+			</ul>
+			<p>Made with <Heart class="mx-px mb-1 inline text-sm text-rose" /> by Kiron Dey</p>
+		</div>
+	</footer>
 </main>
