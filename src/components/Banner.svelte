@@ -17,10 +17,9 @@
 		class="absolute -right-12 -top-24 size-52 -rotate-[20deg] rounded-[4rem] bg-gradient-to-bl from-white/5 to-white/35 md:size-80 lg:-bottom-24"
 	/>
 	<div class="z-[1]">
-		<h1 class="mb-6 text-4xl font-extrabold md:text-5xl">Nextjs 14 Crash Course</h1>
+		<h1 class="mb-6 text-4xl font-extrabold md:text-5xl"><slot name="title"/></h1>
 		<p class="max-w-prose text-base font-semibold md:text-xl">
-			Next.js is a React framework for buildi4ng full-stack web applications. You use React
-			Components to build user interfaces, and Next.js for additional features and optimizations.
+			<slot name="description"/>
 		</p>
 	</div>
 	<ul class="z-[1] mt-12 flex gap-8 md:mt-0">

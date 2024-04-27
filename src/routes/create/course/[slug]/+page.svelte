@@ -48,9 +48,6 @@
 				class="h-36 w-full rounded-lg bg-surface-foreground px-5 py-4 font-body outline-none outline-1 placeholder:text-muted focus:outline-fuchsia"
 				placeholder="Enter description"
 			/>
-			<Button size="wide" class="rounded-lg bg-foreground py-3 text-sm text-background"
-				>Update Details</Button
-			>
 		</div>
 		<section class="space-y-4">
 			<header class="flex items-center justify-between">
