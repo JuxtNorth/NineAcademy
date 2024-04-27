@@ -14,11 +14,11 @@
 			<h1
 				class="text-[clamp(3.4rem,5vw,12rem)] font-extrabold leading-[1.1] lg:mb-2 lg:text-[clamp(6.5rem,7vw,8rem)]"
 			>
-				<span class="bg-gradient-to-br from-rose to-orange bg-clip-text text-transparent"
+				<span class="bg-gradient-to-br from-rose to-orange bg-clip-text text-transparent relative before:content-[''] before:w-full before:h-[60%] before:-z-[1] before:absolute before:bottom-0 before:left-0 before:bg-gradient-to-br before:from-rose/25 before:to-orange/25 before:blur-3xl"
 					>Level Up</span
 				><br class="hidden lg:inline" />
 				Your
-				<span class="bg-gradient-to-br from-blue to-fuchsia bg-clip-text text-transparent"
+				<span class="bg-gradient-to-br from-blue to-fuchsia bg-clip-text text-transparent relative before:content-[''] before:w-full before:h-[60%] before:-z-[1] before:absolute before:bottom-0 before:left-0 before:bg-gradient-to-br before:from-blue/25 before:to-fuchsia/25 before:blur-3xl"
 					>Coding Game</span
 				>
 			</h1>
