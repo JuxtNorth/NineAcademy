@@ -191,7 +191,7 @@
 					>
 				</article>
 				<article
-					class="relative space-y-4 rounded-2xl bg-surface p-8 text-left [background-image:radial-gradient(circle_at_100%_100%,hsl(var(--blue)),hsl(var(--fuchsia)))]"
+					class="relative space-y-4 rounded-2xl bg-surface p-8 text-left [background-image:radial-gradient(circle_at_100%_100%,hsl(var(--blue)),hsl(var(--fuchsia)))] overflow-hidden"
 				>
 					<div class="z-[1] space-y-2">
 						<span class="font-semi-bold text-sm">Life membership</span>
