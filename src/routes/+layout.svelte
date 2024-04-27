@@ -20,9 +20,24 @@
 		rel="stylesheet"
 	/>
 	<meta name="image" content="https://ik.imagekit.io/north01x/bscaiavuo/tr:w-720/banner.png" />
-		<meta property="og:title" content="Nine-Academy - Streamlined Education platform." />
-		<meta property="og:image" content="https://ik.imagekit.io/north01x/bscaiavuo/tr:w-720/banner.png" />
-		<meta property="og:description" content="Level up your coding skills with expertly crafted courses." />
+	<meta property="og:title" content="Nine-Academy - Streamlined Education platform." />
+	<meta
+		property="og:image"
+		content="https://ik.imagekit.io/north01x/bscaiavuo/tr:w-720/banner.png"
+	/>
+	<meta
+		property="og:description"
+		content="Level up your coding skills with expertly crafted courses."
+	/>
+	<meta name="twitter:title" content="Nine-Academy - Streamlined Education platform" />
+	<meta
+		name="twitter:image"
+		content="https://ik.imagekit.io/north01x/bscaiavuo/tr:w-720/banner.png"
+	/>
+	<meta
+		name="twitter:description"
+		content="Level up your coding skills with expertly crafted courses."
+	/>
 </svelte:head>
 
 <slot />
