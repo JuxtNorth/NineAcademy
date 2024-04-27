@@ -1,0 +1,48 @@
+<script lang="ts">
+	import { CourseTab } from '$components';
+	import { user } from '$lib/stores';
+	import { getFirebaseApp, getFirestoreDoc } from '$lib/firebase';
+	import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
+
+	export let ownedCourses: string[] = [];
+
+	let courses: Array<{ id: string; title: string }> = [];
+
+	function getBannerVariant(index: number) {
+		return 'abcd'[index % courses.length] as 'a' | 'b' | 'c' | 'd';
+	}
+
+	async function getOwnedCourseIDs(uid: string) {
+		const userDoc = await getFirestoreDoc<{ purchases: string[] }>(`users/${uid}`);
+		if (userDoc) {
+			ownedCourses = userDoc.purchases;
+		}
+	}
+
+	async function getCourseNames() {
+		const db = getFirestore(getFirebaseApp());
+		const courseQuery = query(collection(db, 'resource-names'), where('type', '==', 'course'));
+		const courseDocs = await getDocs(courseQuery);
+		ownedCourses = [];
+		courseDocs.forEach((doc) => {
+			courses.push({
+				id: doc.id,
+				title: doc.data().name
+			});
+		});
+	}
+
+	user.subscribe(async (userData) => {
+		if (userData === null) return;
+		getCourseNames();
+		getOwnedCourseIDs(userData.uid);
+	});
+</script>
+
+<main class="mx-auto max-w-[100rem] p-8">
+	<section class="grid grid-flow-row gap-4 p-4 md:grid-cols-2 lg:grid-cols-3">
+		{#each courses as course, index}
+			<CourseTab {...course} owned={ownedCourses} variant={getBannerVariant(index)} />
+		{/each}
+	</section>
+</main>

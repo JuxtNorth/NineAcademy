@@ -5,7 +5,7 @@
 
 <section
 	class={cn(
-		'relative flex flex-col justify-between overflow-hidden rounded-3xl p-8 [background-image:radial-gradient(at_left_bottom,hsl(var(--rose)),hsl(var(--orange)))] md:min-h-96 lg:p-12',
+		'relative flex flex-col justify-between overflow-hidden rounded-3xl p-8 [background-image:radial-gradient(at_left_bottom,hsl(var(--rose)),hsl(var(--orange)))] md:min-h-96 h-fit lg:p-12',
 		$$props.class
 	)}
 >
@@ -22,7 +22,7 @@
 			<slot name="description"/>
 		</p>
 	</div>
-	<ul class="z-[1] mt-12 flex gap-8 md:mt-0">
+	<ul class="z-[1] mt-12 flex gap-8">
 		<li class="flex items-center gap-2">
 			<Heart class="inline text-lg opacity-80" />
 			<span>1.2k</span>

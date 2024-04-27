@@ -8,3 +8,4 @@ export { default as ChapterEditor } from './ChapterEditor.svelte';
 export { default as Code } from './Code.svelte';
 export { default as TextArea } from './TextArea.svelte';
 export { default as NoisyOverlay } from './NoiseOverlay.svelte';
+export { default as CourseTab } from "./CourseTab.svelte"

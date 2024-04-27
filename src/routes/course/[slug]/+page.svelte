@@ -1,17 +1,39 @@
 <script lang="ts">
 	import { Banner, MarkdownArticle, Nav, Pagination } from '$components';
-	import { CheckBox } from '$components/ui';
+	import { getFirestoreDoc } from '$lib/firebase';
+	import { user } from '$lib/stores';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
 
-	let selectedChapterIndex = 0;
+	interface CourseData {
+		title: string;
+		description: string;
+		chapters: Array<{ title: string; content: string }>;
+	}
+
+	let title = '',
+		description = '',
+		chapters: CourseData['chapters'] = [],
+		selectedChapterIndex = 0;
+
+	user.subscribe(async (userData) => {
+		if (userData === null) return;
+		const courseData = await getFirestoreDoc<CourseData>(`courses/${data.courseId}`);
+		if (courseData) {
+			({ title, description } = courseData);
+			chapters = [...courseData.chapters];
+			selectedChapterIndex = 0;
+		} else {
+			// redirect to 404 page
+		}
+	});
 
 	function getNavigationFunc(offset: number): () => void {
 		return () => {
 			selectedChapterIndex += offset;
-			if (selectedChapterIndex < 0) selectedChapterIndex = data.chapters.length - 1;
-			if (selectedChapterIndex >= data.chapters.length) selectedChapterIndex = 0;
+			if (selectedChapterIndex < 0) selectedChapterIndex = chapters.length - 1;
+			if (selectedChapterIndex >= chapters.length) selectedChapterIndex = 0;
 		};
 	}
 
@@ -27,7 +49,7 @@
 	>
 		<div class="h-full space-y-6 overflow-y-scroll p-6">
 			<ul class="space-y-2">
-				{#each data.chapters as { title }, index}
+				{#each chapters as { title }, index}
 					<li>
 						<button
 							on:click={getChapterSelector(index)}
@@ -43,10 +65,12 @@
 	</aside>
 	<section>
 		<Banner class="mb-8">
-			<slot slot="title">{data.title}</slot>
-			<slot slot="description">{data.description}</slot>
+			<slot slot="title">{title}</slot>
+			<slot slot="description">{description}</slot>
 		</Banner>
-		<MarkdownArticle source={data.chapters[selectedChapterIndex].content} />
+		{#if chapters.length > 0}
+			<MarkdownArticle source={chapters[selectedChapterIndex].content} />
+		{/if}
 		<Pagination class="px-4" on:prev={getNavigationFunc(-1)} on:next={getNavigationFunc(1)} />
 	</section>
 </main>

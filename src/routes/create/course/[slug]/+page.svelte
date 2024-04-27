@@ -3,22 +3,43 @@
 	import { Nav, ChapterEditor, MarkdownArticle } from '$components';
 	import { Plus } from '$icons';
 	import type { PageData } from './$types';
-	import { alert } from '$lib/stores';
-	import { setFirestoreDoc } from '$lib/firebase';
-
+	import { alert, user } from '$lib/stores';
+	import { getFirestoreDoc, updateFirestoreDoc } from '$lib/firebase';
+	
 	export let data: PageData;
 
-	let { title, description, chapters } = data;
-	let selectedChapterIndex = 0;
+	let { courseId } = data;
+
+	interface CourseData {
+		title: string;
+		description: string;
+		chapters: Array<{ title: string; content: string }>;
+	}
+
+	let title = '',
+		description = '',
+		chapters: CourseData['chapters'] = [],
+		selectedChapterIndex = 0;
+
+	user.subscribe(async (userData) => {
+		if (userData === null) return;
+		const courseData = await getFirestoreDoc<CourseData>(`courses/${courseId}`);
+		if (courseData) {
+			({ title, description } = courseData);
+			chapters = [...courseData.chapters];
+			selectedChapterIndex = 0;
+		} else {
+			// redirect to 404 page
+		}
+	});
 
 	function addNewChapter() {
-		const newchapter = { title: '', content: '# Undefined' };
-		chapters = [...chapters, newchapter];
+		chapters = [...chapters, { title: '', content: '# Undefined' }];
 	}
 
 	async function commit() {
 		try {
-			await setFirestoreDoc(`courses/${data.id}`, { title, description, chapters });
+			await updateFirestoreDoc(`courses/${courseId}`, { title, description, chapters });
 			alert.set({
 				title: 'Success',
 				description: 'Successfully update this course',
@@ -74,7 +95,9 @@
 			<h1 class="text-4xl font-bold">Preview</h1>
 		</header>
 		<div class="h-fit overflow-y-scroll rounded-lg bg-surface p-4">
-			<MarkdownArticle source={chapters[selectedChapterIndex].content} />
+			{#if chapters.length > 0}
+				<MarkdownArticle source={chapters[selectedChapterIndex].content} />
+			{/if}
 		</div>
 	</section>
 </div>

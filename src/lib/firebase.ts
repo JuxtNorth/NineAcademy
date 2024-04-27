@@ -11,13 +11,36 @@ import {
 import { alert, user } from '$lib/stores';
 import { goto } from '$app/navigation';
 import { firebaseConfig } from '$constants';
-import { doc, getDoc, getFirestore, setDoc } from 'firebase/firestore';
+import { arrayUnion, doc, getDoc, getFirestore, setDoc, updateDoc } from 'firebase/firestore';
 
 export function getFirebaseApp() {
 	return getApps().length ? getApp() : initializeApp(firebaseConfig);
 }
 
-export function createUser() {}
+export async function createUser(uid: string, username: string | null = '') {
+	const db = getFirestore(getFirebaseApp());
+	try {
+		const docRef = doc(db, `users/${uid}`);
+		// Check if user exists
+		const docSnap = await getDoc(docRef);
+		if (!docSnap.exists()) {
+			await setDoc(docRef, { username, courses: [] });
+		}
+	} catch (error) {
+		console.error(error);
+	}
+}
+
+export async function purchaseCourse(uid: string, courseId: string) {
+	const db = getFirestore(getFirebaseApp());
+	try {
+		setDoc(doc(db, `users/${uid}`), {
+			purchases: arrayUnion(courseId)
+		});
+	} catch (error) {
+		console.error(error);
+	}
+}
 
 export async function signInWithProvider(provider: AuthProvider) {
 	const auth = getAuth(getFirebaseApp());
@@ -52,9 +75,10 @@ export async function handleSignInWithEmail() {
 
 export function observeAuthStateChange() {
 	const auth = getAuth();
-	onAuthStateChanged(auth, (newUser) => {
+	onAuthStateChanged(auth, async (newUser) => {
 		if (newUser) {
 			user.set(newUser);
+			await createUser(newUser.uid, newUser.displayName || newUser.email);
 			if (window.location.pathname === '/signin') goto('/');
 		} else {
 			user.set(null);
@@ -91,6 +115,7 @@ export async function getFirestoreDoc<T>(path: string): Promise<T | null> {
 			return docSnap.data() as T;
 		}
 	} catch (error) {
+		console.error('Error on requesting resource: ', path);
 		console.error(error);
 	}
 	return null;
@@ -101,4 +126,11 @@ export async function setFirestoreDoc(path: string, data: any) {
 	const db = getFirestore(getFirebaseApp());
 	const docRef = doc(db, path);
 	await setDoc(docRef, data);
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function updateFirestoreDoc(path: string, data: any) {
+	const db = getFirestore(getFirebaseApp());
+	const docRef = doc(db, path);
+	await updateDoc(docRef, data);
 }
