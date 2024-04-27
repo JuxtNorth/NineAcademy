@@ -100,7 +100,6 @@
 				</Button>
 			</div>
 		</form>
-		<button class="text-blue-700 absolute bottom-4 text-sm">Skip sign in</button>
 	</section>
 </main>
 
