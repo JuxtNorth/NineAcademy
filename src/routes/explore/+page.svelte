@@ -51,6 +51,8 @@
 			<CourseTab skeleton />
 			<CourseTab skeleton />
 			<CourseTab skeleton />
+			<CourseTab skeleton />
+			<CourseTab skeleton />
 		{/if}
 	</section>
 </main>

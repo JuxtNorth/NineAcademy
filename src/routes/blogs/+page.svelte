@@ -25,10 +25,19 @@
 </script>
 
 <main class="mx-auto max-w-[100rem] space-y-8 p-8 text-center">
-	<h1 class="mx-auto text-3xl font-semibold md:max-w-[72%] md:text-5xl">Explore Courses</h1>
+	<h1 class="mx-auto text-3xl font-semibold md:max-w-[72%] md:text-5xl">Explore Blogs</h1>
 	<section class="grid grid-flow-row gap-4 p-4 md:grid-cols-2 lg:grid-cols-3">
-		{#each blogs as blog, index}
-			<BlogTab {...blog} variant={getBannerVariant(index)} />
-		{/each}
+		{#if blogs.length > 0}
+			{#each blogs as blog, index}
+				<BlogTab {...blog} variant={getBannerVariant(index)} />
+			{/each}
+		{:else}
+			<BlogTab skeleton />
+			<BlogTab skeleton />
+			<BlogTab skeleton />
+			<BlogTab skeleton />
+			<BlogTab skeleton />
+			<BlogTab skeleton />
+		{/if}
 	</section>
 </main>

@@ -1,5 +1,5 @@
 <script>
-	import { Nav, ChapterEditor, MarkdownArticle } from '$components';
+	import { ChapterEditor, MarkdownArticle } from '$components';
 	import { Button, Input } from '$components/ui';
 	import { Plus } from '$icons';
 	import { getFirebaseApp, setFirestoreDoc } from '$lib/firebase';
@@ -60,7 +60,6 @@
 	}
 </script>
 
-<Nav />
 <div class="mx-auto max-w-[100rem] p-4 lg:grid lg:grid-cols-2 lg:gap-8">
 	<form class="no-scrollbar space-y-4 lg:h-[calc(100vh-2rem)] lg:overflow-y-scroll">
 		<header class="flex justify-between">

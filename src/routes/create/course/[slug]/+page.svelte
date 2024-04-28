@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Input, Button } from '$components/ui';
-	import { Nav, ChapterEditor, MarkdownArticle } from '$components';
+	import { ChapterEditor, MarkdownArticle } from '$components';
 	import { Plus } from '$icons';
 	import type { PageData } from './$types';
 	import { alert, user } from '$lib/stores';
@@ -64,7 +64,6 @@
 	}
 </script>
 
-<Nav />
 <div class="mx-auto max-w-[100rem] p-4 lg:grid lg:grid-cols-2 lg:gap-8">
 	<form class="no-scrollbar space-y-4 lg:h-[calc(100vh-2rem)] lg:overflow-y-scroll p-4">
 		<header class="flex justify-between">

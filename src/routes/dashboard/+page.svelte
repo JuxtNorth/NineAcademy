@@ -38,18 +38,27 @@
 </script>
 
 <Nav />
-<main class="mx-auto max-w-[100rem] space-y-8 p-8 text-center">
+<main class="mx-auto max-w-[100rem] space-y-8 p-8">
 	<h1
-		class="mx-auto ml-4 text-left text-3xl font-semibold md:max-w-[72%] md:text-5xl lg:ml-0 lg:text-center"
+		class="ml-4 text-3xl font-semibold md:max-w-[72%] md:text-5xl"
 	>
 		DashBoard
 	</h1>
 	<div class="space-y-6 p-4 text-left">
 		<p class="text-2xl">Your Courses</p>
 		<section class="grid grid-flow-row gap-4 md:grid-cols-2 lg:grid-cols-3">
-			{#each courses as course, index}
-				<CourseTab {...course} owned={ownedCourses} variant={getBannerVariant(index)} />
-			{/each}
+			{#if courses.length > 0}
+				{#each courses as course, index}
+					<CourseTab {...course} owned={ownedCourses} variant={getBannerVariant(index)} />
+				{/each}
+			{:else}
+				<CourseTab skeleton />
+				<CourseTab skeleton />
+				<CourseTab skeleton />
+				<CourseTab skeleton />
+				<CourseTab skeleton />
+				<CourseTab skeleton />
+			{/if}
 		</section>
 	</div>
 </main>
