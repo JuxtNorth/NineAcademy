@@ -4,12 +4,20 @@
 
 	export let isOpen = true;
 
+	let container: HTMLDivElement;
+
 	function toggle() {
 		isOpen = !isOpen;
 	}
+
+	function handleWindowClick(e: Event) {
+		if (!container.contains(e.target as Node)) isOpen = false;
+	}
 </script>
 
-<div class="relative w-fit">
+<svelte:window on:click={handleWindowClick} />
+
+<div class="relative w-fit" bind:this={container}>
 	<slot name="trigger" {toggle} />
 	{#if isOpen}
 		<menu
