@@ -1,4 +1,5 @@
 <script>
+	import { goto } from '$app/navigation';
 	import { IconGrid, Nav, NoisyOverlay } from '$components';
 	import { ArrowRight, Heart, Twitter, LinkedIn, Instagram, Github } from '$icons';
 </script>
@@ -55,6 +56,7 @@
 							</p>
 							<button
 								class="flex items-center justify-around gap-2 rounded-full bg-white/30 px-6 py-3.5 text-xs text-[#444] hover:bg-white/40 md:text-sm"
+								on:click={() => goto("/explore")}
 							>
 								Explore Courses
 								<ArrowRight class="text-sm" />

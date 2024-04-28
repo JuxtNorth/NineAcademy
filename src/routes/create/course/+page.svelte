@@ -30,7 +30,7 @@
 			if (!userData) {
 				alert.set({
 					title: 'Auth Error',
-					description: 'You need to be signed in to an account in order to create a blog',
+					description: 'You need to be signed in to an account in order to create a course',
 					type: 'error'
 				});
 				return goto('/signin');
