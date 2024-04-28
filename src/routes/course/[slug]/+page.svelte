@@ -80,7 +80,7 @@
 			on:prev={getNavigationFunc(-1)}
 			on:next={getNavigationFunc(1)}
 			on:edit{moveToEditPage}
-			editLink={(userId === author) ? `/create/course/${data.courseId}` : undefined}
+			editLink={userId === author ? `/create/course/${data.courseId}` : undefined}
 		/>
 	</section>
 </main>

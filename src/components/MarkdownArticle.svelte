@@ -6,7 +6,7 @@
 	export let source = '';
 </script>
 
-<article class={cn("content-markdown", $$props["class"])}>
+<article class={cn('content-markdown', $$props['class'])}>
 	<SvelteMarkdown
 		{source}
 		renderers={{

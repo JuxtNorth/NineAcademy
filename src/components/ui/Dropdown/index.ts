@@ -1,2 +1,2 @@
-import Root from "./Root.svelte";
+import Root from './Root.svelte';
 export default Root;

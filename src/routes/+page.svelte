@@ -14,11 +14,13 @@
 			<h1
 				class="text-[clamp(3.4rem,5vw,12rem)] font-extrabold leading-[1.1] lg:mb-2 lg:text-[clamp(6.5rem,7vw,8rem)]"
 			>
-				<span class="bg-gradient-to-br from-rose to-orange bg-clip-text text-transparent relative before:content-[''] before:w-full before:h-[60%] before:-z-[1] before:absolute before:bottom-0 before:left-0 before:bg-gradient-to-br before:from-rose/40 before:to-orange/40 before:blur-3xl"
+				<span
+					class="relative bg-gradient-to-br from-rose to-orange bg-clip-text text-transparent before:absolute before:bottom-0 before:left-0 before:-z-[1] before:h-[60%] before:w-full before:bg-gradient-to-br before:from-rose/40 before:to-orange/40 before:blur-3xl before:content-['']"
 					>Level Up</span
 				><br class="hidden lg:inline" />
 				Your
-				<span class="bg-gradient-to-br from-blue to-fuchsia bg-clip-text text-transparent relative before:content-[''] before:w-full before:h-[60%] before:-z-[1] before:absolute before:bottom-0 before:left-0 before:bg-gradient-to-br before:from-blue/40 before:to-fuchsia/40 before:blur-3xl"
+				<span
+					class="relative bg-gradient-to-br from-blue to-fuchsia bg-clip-text text-transparent before:absolute before:bottom-0 before:left-0 before:-z-[1] before:h-[60%] before:w-full before:bg-gradient-to-br before:from-blue/40 before:to-fuchsia/40 before:blur-3xl before:content-['']"
 					>Coding Game</span
 				>
 			</h1>
@@ -191,7 +193,7 @@
 					>
 				</article>
 				<article
-					class="relative space-y-4 rounded-2xl bg-surface p-8 text-left [background-image:radial-gradient(circle_at_100%_100%,hsl(var(--blue)),hsl(var(--fuchsia)))] overflow-hidden"
+					class="relative space-y-4 overflow-hidden rounded-2xl bg-surface p-8 text-left [background-image:radial-gradient(circle_at_100%_100%,hsl(var(--blue)),hsl(var(--fuchsia)))]"
 				>
 					<div class="z-[1] space-y-2">
 						<span class="font-semi-bold text-sm">Life membership</span>

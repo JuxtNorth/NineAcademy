@@ -39,10 +39,8 @@
 	});
 </script>
 
-<main class="mx-auto max-w-[100rem] p-8 text-center space-y-8">
-	<h1 class="mx-auto text-3xl font-semibold md:max-w-[72%] md:text-5xl">
-		Explore Courses
-	</h1>
+<main class="mx-auto max-w-[100rem] space-y-8 p-8 text-center">
+	<h1 class="mx-auto text-3xl font-semibold md:max-w-[72%] md:text-5xl">Explore Courses</h1>
 	<section class="grid grid-flow-row gap-4 p-4 md:grid-cols-2 lg:grid-cols-3">
 		{#each courses as course, index}
 			<CourseTab {...course} owned={ownedCourses} variant={getBannerVariant(index)} />

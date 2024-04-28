@@ -21,7 +21,10 @@
 <ul class={cn('flex gap-2', $$props['class'])}>
 	{#if editLink}
 		<li>
-			<a class="bg-blue flex justify-center items-center px-5 h-full text-sm rounded-full" href={editLink}>Edit Course</a>
+			<a
+				class="flex h-full items-center justify-center rounded-full bg-blue px-5 text-sm"
+				href={editLink}>Edit Course</a
+			>
 		</li>
 	{/if}
 	<li>

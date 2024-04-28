@@ -32,7 +32,7 @@
 			chapters = [...courseData.chapters];
 			selectedChapterIndex = 0;
 		} else {
-			// Show 404 page 
+			// Show 404 page
 		}
 	});
 

@@ -1,8 +1,8 @@
 export { default as Google } from './Google.svelte';
 export { default as Github } from './Github.svelte';
 export { default as Twitter } from './Twitter.svelte';
-export { default as Instagram } from "./Instagram.svelte"
-export { default as LinkedIn } from "./LinkedIn.svelte"
+export { default as Instagram } from './Instagram.svelte';
+export { default as LinkedIn } from './LinkedIn.svelte';
 export { default as Warning } from './Warning.svelte';
 export { default as Heart } from './Heart.svelte';
 export { default as Bookmark } from './Bookmark.svelte';

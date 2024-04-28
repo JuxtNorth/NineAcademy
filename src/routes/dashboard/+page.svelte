@@ -3,7 +3,7 @@
 	import { user } from '$lib/stores';
 	import { getFirebaseApp, getFirestoreDoc } from '$lib/firebase';
 	import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
-  import { Nav } from "$components"
+	import { Nav } from '$components';
 
 	let ownedCourses: string[] = [];
 
@@ -23,11 +23,11 @@
 		const courseQuery = query(collection(db, 'resource-names'), where('type', '==', 'course'));
 		const courseDocs = await getDocs(courseQuery);
 		ownedCourses = await getOwnedCourseIDs(uid);
-    courses = [];
+		courses = [];
 		courseDocs.forEach((doc) => {
 			if (ownedCourses.includes(doc.id)) {
 				courses.push({ id: doc.id, title: doc.data().name });
-      }
+			}
 		});
 	}
 
@@ -39,10 +39,12 @@
 
 <Nav />
 <main class="mx-auto max-w-[100rem] space-y-8 p-8 text-center">
-	<h1 class="mx-auto text-3xl font-semibold md:max-w-[72%] md:text-5xl text-left ml-4 lg:ml-0 lg:text-center">
+	<h1
+		class="mx-auto ml-4 text-left text-3xl font-semibold md:max-w-[72%] md:text-5xl lg:ml-0 lg:text-center"
+	>
 		DashBoard
 	</h1>
-	<div class="space-y-6 text-left p-4">
+	<div class="space-y-6 p-4 text-left">
 		<p class="text-2xl">Your Courses</p>
 		<section class="grid grid-flow-row gap-4 md:grid-cols-2 lg:grid-cols-3">
 			{#each courses as course, index}
