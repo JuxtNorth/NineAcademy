@@ -27,7 +27,14 @@
 		const db = getFirestore(getFirebaseApp());
 		try {
 			const userData = get(user);
-			if (!userData) throw new Error('Auth error: You must be signed in to perform this operation');
+			if (!userData) {
+				alert.set({
+					title: 'Auth Error',
+					description: 'You need to be signed in to an account in order to create a blog',
+					type: 'error'
+				});
+				return goto('/signin');
+			}
 			const courseId = await runTransaction(db, async () => {
 				const courseRef = collection(db, 'courses');
 				const courseDocRef = await addDoc(courseRef, {
@@ -67,7 +74,7 @@
 			<Button type="submit" size="auto" class="rounded-lg" on:click={create}>Create</Button>
 		</header>
 		<div class="space-y-2 lg:px-2">
-			<Input bind:value={title} class="rounded-lg" placeholder="Enter Course title" required/>
+			<Input bind:value={title} class="rounded-lg" placeholder="Enter Course title" required />
 			<textarea
 				bind:value={description}
 				class="h-36 w-full rounded-lg bg-surface-foreground px-5 py-4 font-body outline-none outline-1 placeholder:text-muted focus:outline-fuchsia"

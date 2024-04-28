@@ -5,6 +5,7 @@
 	import { getFirestore, collection, runTransaction, doc } from 'firebase/firestore';
 	import { get } from 'svelte/store';
 	import { user, alert } from '$lib/stores';
+	import { goto } from '$app/navigation';
 
 	let title = 'Untitled',
 		content = '';
@@ -33,7 +34,12 @@
 					type: 'info'
 				});
 			} else {
-				throw new Error('Auth error: User not signed in');
+				alert.set({
+					title: 'Auth Error',
+					description: 'You need to be signed in to an account in order to create a blog',
+					type: 'error'
+				})
+				return goto('/signin');
 			}
 		} catch (error) {
 			console.error(error);
