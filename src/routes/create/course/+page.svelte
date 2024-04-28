@@ -66,7 +66,7 @@
 			<h1 class="text-4xl font-bold">{title}</h1>
 			<Button size="auto" class="rounded-lg" on:click={create}>Create</Button>
 		</header>
-		<div class="space-y-2">
+		<div class="space-y-2 lg:px-2">
 			<Input bind:value={title} class="rounded-lg" placeholder="Enter Course title" />
 			<textarea
 				bind:value={description}
