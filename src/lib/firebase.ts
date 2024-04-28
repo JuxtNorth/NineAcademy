@@ -126,6 +126,7 @@ export async function setFirestoreDoc(path: string, data: any) {
 	const db = getFirestore(getFirebaseApp());
 	const docRef = doc(db, path);
 	await setDoc(docRef, data);
+	return docRef;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

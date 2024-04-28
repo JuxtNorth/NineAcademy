@@ -9,7 +9,7 @@
 		$$props.class
 	)}
 >
-	<div class="absolute left-0 top-0 size-full [background-image:url('noise-textures/1.png')]" />
+	<div class="absolute left-0 top-0 size-full [background-image:url('/noise-textures/1.png')] opacity-60" />
 	<div
 		class="absolute -bottom-24 -left-12 size-64 rounded-full bg-gradient-to-tr from-white/5 to-white/35 md:size-72"
 	/>

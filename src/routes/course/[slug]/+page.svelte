@@ -3,6 +3,7 @@
 	import { getFirestoreDoc } from '$lib/firebase';
 	import { user } from '$lib/stores';
 	import type { PageData } from './$types';
+	import { goto } from "$app/navigation";
 
 	export let data: PageData;
 
@@ -10,18 +11,22 @@
 		title: string;
 		description: string;
 		chapters: Array<{ title: string; content: string }>;
+		author: string;
 	}
 
 	let title = '',
 		description = '',
 		chapters: CourseData['chapters'] = [],
-		selectedChapterIndex = 0;
+		selectedChapterIndex = 0,
+		author = '/',
+		userId = '#';
 
 	user.subscribe(async (userData) => {
 		if (userData === null) return;
+		userId = userData.uid;
 		const courseData = await getFirestoreDoc<CourseData>(`courses/${data.courseId}`);
 		if (courseData) {
-			({ title, description } = courseData);
+			({ title, description, author } = courseData);
 			chapters = [...courseData.chapters];
 			selectedChapterIndex = 0;
 		} else {
@@ -71,6 +76,12 @@
 		{#if chapters.length > 0}
 			<MarkdownArticle source={chapters[selectedChapterIndex].content} />
 		{/if}
-		<Pagination class="px-4" on:prev={getNavigationFunc(-1)} on:next={getNavigationFunc(1)} />
+		<Pagination
+			class="px-4"
+			on:prev={getNavigationFunc(-1)}
+			on:next={getNavigationFunc(1)}
+			on:edit{moveToEditPage}
+			editLink={(userId === author) ? `/create/course/${data.courseId}` : undefined}
+		/>
 	</section>
 </main>

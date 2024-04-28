@@ -5,6 +5,8 @@
 	import { alert } from '$lib/stores';
 	import { createEventDispatcher } from 'svelte';
 
+	export let editLink: string | undefined;
+
 	function showCompleteMessage() {
 		alert.set({
 			title: 'info',
@@ -17,6 +19,11 @@
 </script>
 
 <ul class={cn('flex gap-2', $$props['class'])}>
+	{#if editLink}
+		<li>
+			<a class="bg-blue flex justify-center items-center px-5 h-full text-sm rounded-full" href={editLink}>Edit Course</a>
+		</li>
+	{/if}
 	<li>
 		<Button class="flex h-full items-center gap-2 text-sm" on:click={showCompleteMessage}
 			><Check /><span>Mark as Complete</span></Button

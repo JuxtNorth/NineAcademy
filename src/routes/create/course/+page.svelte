@@ -1,57 +1,53 @@
-<script lang="ts">
-	import { Input, Button } from '$components/ui';
+<script>
 	import { Nav, ChapterEditor, MarkdownArticle } from '$components';
+	import { Button, Input } from '$components/ui';
 	import { Plus } from '$icons';
-	import type { PageData } from './$types';
+	import { getFirebaseApp, setFirestoreDoc } from '$lib/firebase';
+	import { getFirestore, runTransaction, collection, addDoc } from 'firebase/firestore';
 	import { alert, user } from '$lib/stores';
-	import { getFirebaseApp, getFirestoreDoc, setFirestoreDoc } from '$lib/firebase';
-	import { doc, getFirestore, writeBatch } from 'firebase/firestore';
+	import { get } from 'svelte/store';
+	import { goto } from '$app/navigation';
 
-	export let data: PageData;
-
-	let { courseId } = data;
-
-	interface CourseData {
-		title: string;
-		description: string;
-		chapters: Array<{ title: string; content: string }>;
-	}
-
-	let title = '',
-		description = '',
-		chapters: CourseData['chapters'] = [],
-		selectedChapterIndex = 0,
-		userId = '';
-
-	user.subscribe(async (userData) => {
-		if (userData === null) return;
-		userId = userData.uid;
-		const courseData = await getFirestoreDoc<CourseData>(`courses/${courseId}`);
-		if (courseData) {
-			({ title, description } = courseData);
-			chapters = [...courseData.chapters];
-			selectedChapterIndex = 0;
-		} else {
-			// Show 404 page 
+	let title = 'Untitled';
+	let description = '';
+	let chapters = [
+		{
+			title: 'Undefined',
+			content: ''
 		}
-	});
+	];
+	let selectedChapterIndex = 0;
 
 	function addNewChapter() {
-		chapters = [...chapters, { title: '', content: '# Undefined' }];
+		chapters = [...chapters, { title: 'Undefined', content: '# Undefined' }];
 	}
 
-	async function commit() {
+	async function create() {
+		const db = getFirestore(getFirebaseApp());
 		try {
-			const db = getFirestore(getFirebaseApp());
-			const batch = writeBatch(db);
-			batch.set(doc(db, `courses/${courseId}`), { title, description, chapters, author: userId });
-			batch.set(doc(db, `resource-names/${courseId}`), { name: title, type: 'course' });
-			await batch.commit();
+			const userData = get(user);
+			if (!userData) throw new Error('Auth error: You must be signed in to perform this operation');
+			const courseId = await runTransaction(db, async () => {
+				const courseRef = collection(db, 'courses');
+				const courseDocRef = await addDoc(courseRef, {
+					title,
+					description,
+					chapters,
+					author: userData.uid
+				});
+				await setFirestoreDoc(`resource-names/${courseDocRef.id}`, {
+					name: title,
+					type: 'course'
+				});
+				return courseDocRef.id;
+			});
 			alert.set({
 				title: 'Success',
 				description: 'Successfully update this course',
 				type: 'info'
 			});
+			goto(`/course/${courseId}`);
+			console.log(courseId);
 		} catch (error) {
 			alert.set({
 				title: 'Error',
@@ -67,8 +63,8 @@
 <div class="mx-auto max-w-[100rem] p-4 lg:grid lg:grid-cols-2 lg:gap-8">
 	<div class="no-scrollbar space-y-4 lg:h-[calc(100vh-2rem)] lg:overflow-y-scroll">
 		<header class="flex justify-between">
-			<h1 class="text-4xl font-bold">{title || 'Untitled'}</h1>
-			<Button size="auto" class="rounded-lg" on:click={commit}>Commit</Button>
+			<h1 class="text-4xl font-bold">{title}</h1>
+			<Button size="auto" class="rounded-lg" on:click={create}>Create</Button>
 		</header>
 		<div class="space-y-2">
 			<Input bind:value={title} class="rounded-lg" placeholder="Enter Course title" />
