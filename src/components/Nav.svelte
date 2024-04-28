@@ -3,7 +3,7 @@
 </script>
 
 <nav class="flex h-12 w-full items-center justify-between px-4">
-	<h1 class="font-semibold">Nine Academy</h1>
+	<h1 class="font-semibold"><a href="/">Nine Academy</a></h1>
 	<div>
 		<menu>
 			<li></li>
