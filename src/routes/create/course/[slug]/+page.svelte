@@ -4,7 +4,7 @@
 	import { Plus } from '$icons';
 	import type { PageData } from './$types';
 	import { alert, user } from '$lib/stores';
-	import { getFirebaseApp, getFirestoreDoc, setFirestoreDoc } from '$lib/firebase';
+	import { getFirebaseApp, getFirestoreDoc } from '$lib/firebase';
 	import { doc, getFirestore, writeBatch } from 'firebase/firestore';
 
 	export let data: PageData;
@@ -66,7 +66,7 @@
 
 <Nav />
 <div class="mx-auto max-w-[100rem] p-4 lg:grid lg:grid-cols-2 lg:gap-8">
-	<form class="no-scrollbar space-y-4 lg:h-[calc(100vh-2rem)] lg:overflow-y-scroll">
+	<form class="no-scrollbar space-y-4 lg:h-[calc(100vh-2rem)] lg:overflow-y-scroll p-4">
 		<header class="flex justify-between">
 			<h1 class="text-4xl font-bold">{title || 'Untitled'}</h1>
 			<Button type="type" size="auto" class="rounded-lg" on:click={commit}>Commit</Button>
