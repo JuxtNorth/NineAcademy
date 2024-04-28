@@ -39,7 +39,7 @@
 
 <Nav />
 <main class="mx-auto max-w-[100rem] space-y-8 p-8 text-center">
-	<h1 class="mx-auto text-3xl font-semibold md:max-w-[72%] md:text-5xl">
+	<h1 class="mx-auto text-3xl font-semibold md:max-w-[72%] md:text-5xl text-left ml-4 lg:ml-0 lg:text-center">
 		DashBoard
 	</h1>
 	<div class="space-y-6 text-left p-4">
