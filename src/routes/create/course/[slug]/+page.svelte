@@ -41,6 +41,7 @@
 	}
 
 	async function commit() {
+		if (!title || !description) return;
 		try {
 			const db = getFirestore(getFirebaseApp());
 			const batch = writeBatch(db);
@@ -65,17 +66,18 @@
 
 <Nav />
 <div class="mx-auto max-w-[100rem] p-4 lg:grid lg:grid-cols-2 lg:gap-8">
-	<div class="no-scrollbar space-y-4 lg:h-[calc(100vh-2rem)] lg:overflow-y-scroll">
+	<form class="no-scrollbar space-y-4 lg:h-[calc(100vh-2rem)] lg:overflow-y-scroll">
 		<header class="flex justify-between">
 			<h1 class="text-4xl font-bold">{title || 'Untitled'}</h1>
-			<Button size="auto" class="rounded-lg" on:click={commit}>Commit</Button>
+			<Button type="type" size="auto" class="rounded-lg" on:click={commit}>Commit</Button>
 		</header>
 		<div class="space-y-2">
-			<Input bind:value={title} class="rounded-lg" placeholder="Enter Course title" />
+			<Input bind:value={title} class="rounded-lg" placeholder="Enter Course title" required />
 			<textarea
 				bind:value={description}
 				class="h-36 w-full rounded-lg bg-surface-foreground px-5 py-4 font-body outline-none outline-1 placeholder:text-muted focus:outline-fuchsia"
 				placeholder="Enter description"
+				required
 			/>
 		</div>
 		<section class="space-y-4">
@@ -97,7 +99,7 @@
 				{/each}
 			</section>
 		</section>
-	</div>
+	</form>
 	<section class="space-y-4">
 		<header>
 			<h1 class="text-4xl font-bold">Preview</h1>
