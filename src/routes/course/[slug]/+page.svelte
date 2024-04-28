@@ -3,7 +3,6 @@
 	import { getFirestoreDoc } from '$lib/firebase';
 	import { user } from '$lib/stores';
 	import type { PageData } from './$types';
-	import { goto } from "$app/navigation";
 
 	export let data: PageData;
 

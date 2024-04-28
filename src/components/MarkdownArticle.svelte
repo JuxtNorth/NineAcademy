@@ -1,11 +1,12 @@
 <script lang="ts">
 	import SvelteMarkdown from 'svelte-markdown';
 	import { Code } from '$components';
+	import { cn } from '$lib/utils';
 
 	export let source = '';
 </script>
 
-<article class="content-markdown">
+<article class={cn("content-markdown", $$props["class"])}>
 	<SvelteMarkdown
 		{source}
 		renderers={{

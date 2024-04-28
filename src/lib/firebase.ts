@@ -34,7 +34,7 @@ export async function createUser(uid: string, username: string | null = '') {
 export async function purchaseCourse(uid: string, courseId: string) {
 	const db = getFirestore(getFirebaseApp());
 	try {
-		setDoc(doc(db, `users/${uid}`), {
+		updateDoc(doc(db, `users/${uid}`), {
 			purchases: arrayUnion(courseId)
 		});
 	} catch (error) {
