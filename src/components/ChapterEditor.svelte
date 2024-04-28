@@ -1,46 +1,47 @@
 <script lang="ts">
 	import { TextArea } from '$components';
 	import { Input } from '$components/ui';
-	import { Kebab } from '$icons';
+	import { AngleLeft } from '$icons';
 	import { createEventDispatcher } from 'svelte';
 
 	export let index = 0;
-	export let title = 'Lorem Ipsum';
+	export let title = 'Untitled';
 	export let content = '';
 	export let collapsed = false;
 
 	const dispatch = createEventDispatcher();
 
-	function toggle(e: Event) {
-		if (e.target === e.currentTarget) {
-			collapsed = !collapsed;
-			if (!collapsed) dispatch('open');
-		}
+	function toggle() {
+		collapsed = !collapsed;
+		if (!collapsed) dispatch('open');
 	}
 </script>
 
 <article class="space-y-4 rounded-lg bg-surface p-4">
-	<header
-		class="flex items-center justify-between"
-		on:click={toggle}
-		on:keypress={toggle}
-		tabindex="0"
-		role="button"
-	>
+	<header class="flex items-center justify-between">
 		<div class="flex select-none items-center">
 			<span class="mr-3 border-r-[1px] pr-3 font-display"
 				>{(index + 1).toString().padStart(2, '0')}</span
 			>
-			<h1 class="font-body text-lg font-bold">{title || 'Undefined'}</h1>
+			<h1 class="font-body text-lg font-bold">{title}</h1>
 		</div>
-		<button class="rounded-full p-1 text-sm hover:bg-surface-foreground">
-			<Kebab />
+		<button
+			class="rotate-90 rounded-full p-1 text-sm transition-transform hover:bg-surface-foreground [&[data-collapsed='true']]:-rotate-90"
+			on:click={toggle}
+			data-collapsed={collapsed}
+		>
+			<AngleLeft />
 		</button>
 	</header>
 	{#if !collapsed}
 		<div class="space-y-2">
-			<Input class="rounded-lg text-sm" placeholder="Enter Chapter title" bind:value={title} />
-			<TextArea bind:value={content} placeholder="Enter chapter content" />
+			<Input
+				class="rounded-lg text-sm"
+				placeholder="Enter Chapter title"
+				bind:value={title}
+				required
+			/>
+			<TextArea bind:value={content} placeholder="Enter chapter content" required />
 		</div>
 	{/if}
 </article>
