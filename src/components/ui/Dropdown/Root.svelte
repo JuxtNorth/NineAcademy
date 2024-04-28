@@ -2,7 +2,7 @@
 	import Item from './Item.svelte';
 	import { fly } from 'svelte/transition';
 
-	export let isOpen = true;
+	export let isOpen = false;
 
 	let container: HTMLDivElement;
 
