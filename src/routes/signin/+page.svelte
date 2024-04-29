@@ -66,8 +66,8 @@
 		class="absolute left-0 top-0 -z-[1] flex size-full flex-col justify-center px-8 lg:static"
 	>
 		<div class="hidden max-w-[28vw] lg:block">
-			<h1 class="text-[7.5vw] font-extrabold leading-[86%]">Nine<br /> Academy</h1>
-			<p class="mt-6 text-[1.5vw] leading-[108%] text-muted">
+			<h1 class="text-[7.5vw] font-extrabold leading-[86%] bg-gradient-to-tr from-orange via-rose to-fuchsia bg-clip-text text-transparent inline-block">Nine<br /> Academy</h1>
+			<p class="mt-6 text-[1.5vw] leading-[108%] text-foreground">
 				Login to a free account to do more with nine academy.
 			</p>
 		</div>
