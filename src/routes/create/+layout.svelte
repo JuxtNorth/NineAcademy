@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { Nav } from '$components';
+	import { Nav, SignInPrompt } from '$components';
 </script>
 
+<SignInPrompt />
 <Nav />
 <slot />
