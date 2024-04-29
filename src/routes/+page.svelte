@@ -48,10 +48,10 @@
 					>
 						<span class="font-body text-3xl font-bold md:text-5xl">01</span>
 						<div class="space-y-2 md:space-y-4">
-							<h1 class="text-3xl font-semibold md:text-[52px] md:leading-[100%]">
+							<h1 class="text-3xl font-semibold md:text-4xl xl:text-5xl md:leading-[100%]">
 								Comprehensive, easy to understand courses.
 							</h1>
-							<p class="!mb-6 text-sm md:!mb-8 md:text-xl">
+							<p class="!mb-6 text-sm md:!mb-8 md:text-base">
 								Each course is carefully curated to make sure you get the most out of your money
 							</p>
 							<button
@@ -190,7 +190,7 @@
 					<p class="text-sm leading-tight">
 						Contains everything included in the monthly plan with discounts
 					</p>
-					<button class="w-full rounded-full bg-rose py-4 text-sm hover:brightness-110 md:max-w-36"
+					<button class="w-full rounded-full bg-rose/80 py-4 text-sm hover:brightness-110 md:max-w-36"
 						>Buy plan</button
 					>
 				</article>

@@ -13,7 +13,7 @@
 {#if isSignedIn}
 	<Dropdown>
 		<slot slot="trigger" let:toggle>
-			<button class="block size-8" on:click={toggle}>
+			<button class="block size-8" on:click={toggle} aria-label="Dropdown-open">
 				<div class="size-full rounded-full bg-gradient-to-br from-orange to-rose"></div>
 			</button>
 		</slot>
