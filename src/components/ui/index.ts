@@ -6,3 +6,4 @@ export { default as CheckBox } from './CheckBox.svelte';
 export { default as Skeleton } from "./Skeleton.svelte"
 export { default as Dropdown } from './Dropdown';
 export { default as Loader } from "./Loader.svelte"
+export * as Table from "./table";

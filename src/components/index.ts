@@ -11,3 +11,5 @@ export { default as NoisyOverlay } from './NoiseOverlay.svelte';
 export { default as CourseTab } from './CourseTab.svelte';
 export { default as BlogTab } from './BlogTab.svelte';
 export { default as SignInPrompt } from "./SignInPrompt.svelte";
+export { default as PieChart } from "./PieChart.svelte";
+export { default as LineChart } from "./LineChart.svelte";

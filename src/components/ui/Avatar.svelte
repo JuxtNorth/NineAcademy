@@ -44,6 +44,12 @@
 				></Item
 			>
 			<hr class="my-1 border-[#222]" />
+			<Item
+			><a href="/dashboard" class="block size-full py-1 transition-colors hover:text-blue"
+				>Dashboard</a
+			></Item
+		>
+			<hr class="my-1 border-[#222]" />
 
 			<Item
 				><button on:click={signOutUser} class="block size-full py-1 text-left text-rose"
