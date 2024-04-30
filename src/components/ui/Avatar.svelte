@@ -28,8 +28,8 @@
 				></Item
 			>
 			<Item
-				><a href="/dashboard" class="block size-full py-1 transition-colors hover:text-blue"
-					>DashBoard</a
+				><a href="/you" class="block size-full py-1 transition-colors hover:text-blue"
+					>You</a
 				></Item
 			>
 			<hr class="my-1 border-[#222]" />
