@@ -24,7 +24,7 @@ export async function createUser(uid: string, username: string | null = '') {
 		// Check if user exists
 		const docSnap = await getDoc(docRef);
 		if (!docSnap.exists()) {
-			await setDoc(docRef, { username, courses: [] });
+			await setDoc(docRef, { username, purchases: [] });
 		}
 	} catch (error) {
 		console.error(error);
