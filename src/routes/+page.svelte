@@ -220,17 +220,17 @@
 			</h1>
 			<p class="text-center text-sm">Made under the 30DaysCoding 10 day hackathon</p>
 			<ul class="flex gap-4">
-				<li class="rounded-lg bg-surface-foreground p-3">
+				<li class="rounded-lg bg-surface-foreground p-3 hover:brightness-125 transition-[filter]">
 					<a href="https://github.com/JuxtNorth" class="size-fit"><Github /></a>
 				</li>
-				<li class="rounded-lg bg-surface-foreground p-3">
+				<li class="rounded-lg bg-surface-foreground p-3 hover:brightness-125 transition-[filter]">
 					<a href="https://www.instagram.com/juxt_north" class="size-fit"><Instagram /></a>
 				</li>
-				<li class="rounded-lg bg-surface-foreground p-3">
+				<li class="rounded-lg bg-surface-foreground p-3 hover:brightness-125 transition-[filter]">
 					<a href="https://www.linkedin.com/in/kiron-dey-2566302b3" class="size-fit"><LinkedIn /></a
 					>
 				</li>
-				<li class="rounded-lg bg-surface-foreground p-3">
+				<li class="rounded-lg bg-surface-foreground p-3 hover:brightness-125 transition-[filter]">
 					<a href="https://x.com/KironDey14" class="size-fit"><Twitter /></a>
 				</li>
 			</ul>
