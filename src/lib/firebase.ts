@@ -11,7 +11,7 @@ import {
 import { alert, user } from '$lib/stores';
 import { goto } from '$app/navigation';
 import { firebaseConfig } from '$constants';
-import { arrayUnion, doc, DocumentReference, getDoc, getFirestore, setDoc, updateDoc, type DocumentData } from 'firebase/firestore';
+import { arrayUnion, doc, getDoc, getFirestore, setDoc, updateDoc } from 'firebase/firestore';
 
 export function getFirebaseApp() {
 	return getApps().length ? getApp() : initializeApp(firebaseConfig);
@@ -24,7 +24,7 @@ export async function createUser(uid: string, username: string | null = '') {
 		// Check if user exists
 		const docSnap = await getDoc(docRef);
 		if (!docSnap.exists()) {
-			await createDoc(docRef, { username, courses: [] });
+			await setDoc(docRef, { username, courses: [] });
 		}
 	} catch (error) {
 		console.error(error);
@@ -135,7 +135,3 @@ export async function updateFirestoreDoc(path: string, data: any) {
 	const docRef = doc(db, path);
 	await updateDoc(docRef, data);
 }
-function createDoc(docRef: DocumentReference<DocumentData, DocumentData>, arg1: { username: string | null; courses: never[]; }) {
-	throw new Error('Function not implemented.');
-}
-
