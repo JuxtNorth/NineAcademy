@@ -52,9 +52,9 @@
 	}
 </script>
 
-<main class="mx-auto mt-8 max-w-[80rem] space-y-8 lg:mb-12">
+<main class="mx-auto mt-8 max-w-[80rem] space-y-8 lg:mb-12 p-4">
 	<h1 class="text-3xl">Create a blog</h1>
-	<section class="grid grid-flow-row lg:grid-cols-2 gap-8 p-4">
+	<section class="grid grid-flow-row lg:grid-cols-2 gap-8">
 		<form class="space-y-4">
 			<Input bind:value={title} placeholder="Enter blog title" class="rounded-lg" required />
 			<TextArea bind:value={content} placeholder="Enter blog content" required />
